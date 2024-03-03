@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .row {
+        border: red;
+        background: #e6e7e8;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    </style>
+</head>
+<body>
+
+    <div id="list">
+    </div>
+
+    <button id="addRow">+</button>
+    <!-- <h1>hello world</h1> -->
+
+<script>
+
+const addRowButton = document.querySelector('#addRow');
+var listCount = 1;
+
+function addNewRow() {
+    const list = document.querySelector('#list');
+    addRowButton.addEventListener('click',()=>{
+        const previousHtml = list.innerHTML;
+    listCount++;
+
+    list.innerHTML = previousHtml + '<div class="row">List Item '+listCount+'</div>'
+    })   
+}
+
+function addNewRowV2() {
+    addRowButton.addEventListener('click', addNewRowV2);
+    const list = document.querySelector('#list');
+
+    const row = document.createElement('div');
+    row.className = "row"
+    row.innerText = `List Item ${listCount}`
+    row.addEventListener('click', function(event) {
+        event.target.remove();
+    })
+
+    list.append(row);
+    listCount++;
+}
+addNewRowV2();
+
+
+
+
+// addNewRow();
+</script>
+
+</body>
+</html>
