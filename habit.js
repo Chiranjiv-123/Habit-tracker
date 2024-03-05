@@ -123,7 +123,7 @@ let habits = ['Read a Book','going for walk']
     function new_display(weekly_dates){
         let hbox = document.querySelector(".habits-boxes .container ");
         for(let i in hab_obj){
-            hbox.innerHTML += `    <div class="habit-box" id=${Object.keys(hab_obj).length+1-i} >
+            hbox.innerHTML += `    <div class="habit-box" id=box${Object.keys(hab_obj).length+1-i} >
                 <div class="first-row">
                     <div>
                         <span class="habit">${hab_obj[Object.keys(hab_obj).length+1-i]['hab_name']}</span> 
@@ -369,7 +369,7 @@ let habits = ['Read a Book','going for walk']
         
     
 
-    function del_hab(weekly_dates){
+    function del_hab(){
         let hbox = document.querySelector(".habits-boxes .container ");
         hbox.addEventListener('click',(e)=>{
             // console.log(e.target.id)
@@ -388,7 +388,7 @@ let habits = ['Read a Book','going for walk']
                 console.log(hab_obj)
                 hbox.innerHTML=''
                 // disp_habits(habits)
-                new_display(weekly_dates);
+                new_display();
 
             }
             
