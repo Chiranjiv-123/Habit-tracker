@@ -74,27 +74,7 @@ let habits = ['Read a Book','going for walk']
             }
         })
     }
-    function add_habit3(){
-        let hbox = document.querySelector(".habits-boxes .container ");
-        let add_but = document.querySelector(".add-habit button");
-        add_but.addEventListener('click',()=>{   
-            if (hab_inp.value===''){
-                alert('Please Enter an Habit...')
-            }
-            else{
-                let habit_length = Object.keys(hab_obj).length + 1;
-                // habits.push(hab_inp.value)
-                let hab_val = hab_inp.value
-                hab_obj[habit_length] = {hab_name:hab_inp.value,date_day:[false,false,false,false,false,false,false]}
-                hab_inp.value = '';
-                // console.log(habits)
-                console.log(hab_obj)
-                hbox.innerHTML=''
-                disp_habits(habits);
-                // del_hab()
-            }
-        })
-    }
+    
     
     function todays_date(){
         let d = new Date();
