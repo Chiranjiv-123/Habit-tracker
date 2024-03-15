@@ -375,7 +375,9 @@ let habits = ['Read a Book','going for walk']
             // console.log(e.target.id)
             if(!isNaN(parseInt(e.target.id))){
                 let del_id = e.target.id;
-                console.log(del_id);
+                const del_con = confirm(`Are you sure to delete ${hab_obj[del_id]['hab_name']}?` )
+                if(del_con){
+                    console.log(del_id);
                 let box_no = parseInt(del_id);
                 delete hab_obj[box_no];
                 // habits.splice(box_no,1);
@@ -389,6 +391,12 @@ let habits = ['Read a Book','going for walk']
                 hbox.innerHTML=''
                 // disp_habits(habits)
                 new_display();
+                }
+                // else{
+                //     hbox.innerHTML=''
+                //     new_display();
+                // }
+                
 
             }
             
