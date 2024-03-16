@@ -32,13 +32,63 @@ nav .heading span img{
     filter: invert(100%)
 }
 .side-bar .side-container{
+    user-select: none;
     width: 300px;
     height: 100vh;
-    background: #000;
-    position: absolute; 
+    background: #1d2326;
+    position: absolute;
+    top:0;
+    z-index: 5; 
 }
+.side-bar .side-container .heading{
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.side-bar .side-container .heading .quick{
+  font-size: 20px;
+}
+#lightning{
+  width: 20px;
+}
+.side-bar .side-container .heading .back{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width: 25px;
+  height: 25px; */
+  cursor: pointer;
+  border: 1px solid gold;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+.side-bar .side-container .heading .back:hover{
+  box-shadow: 0px 0px 10px 1px grey;
+
+}
+#back-icon{
+  font-size: 15px;
+}
+.anchor-tags{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.anchor-tags a{
+  /* text-align: center; */
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  border-bottom: 2px solid grey;
+}
+
 .container {
-    max-width: 800px;
+    max-width: 650px;
     margin: 0 auto;
     padding: 0 30px;
 }
@@ -296,3 +346,29 @@ div .date , .day{
     opacity: 1;
   }
 
+@media (max-width:700px) {
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+
+  .habits-boxes .container .habit-box {
+    background-color: rgb(50, 55, 65);
+    margin: 20px auto;
+    border-radius: 10px;
+    /* padding: 10px; */
+    /* border: 2px solid red; */
+}
+  .grid-container {
+    margin: auto 0px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    place-items: center;
+}
+
+  .dates {
+    padding: 10px 0px;
+}
+}
