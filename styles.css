@@ -5,6 +5,9 @@
     margin: 0;
     padding: 0;
 }
+html{
+  scroll-behavior: smooth;
+}
 body{
     background-color: #23242a;
     color: #fff;
@@ -22,10 +25,13 @@ nav{
     justify-content: space-between
 
 }
+.quick-access{
+    padding-left: 10px ; 
+    cursor: pointer;
+}
 nav .heading span{
   display: flex;
   gap:5px;
-  
 }
 nav .heading span img{
     /* -webkit-filter: grayscale(100%); */
@@ -33,13 +39,33 @@ nav .heading span img{
 }
 .side-bar .side-container{
     user-select: none;
-    width: 300px;
+    width: 400px;
     height: 100vh;
     background: #1d2326;
-    position: absolute;
+    position: fixed;
     top:0;
     z-index: 5; 
 }
+
+
+@keyframes slideIn {
+  0% {
+      transform: translateX(-100%); /* Start position */
+  }
+  100% {
+      transform: translateX(0); /* End position */
+  }
+}/* assuming original was transparent */
+
+@keyframes slideOut {
+  0% {
+      transform: translateX(0); /* Start position */
+  }
+  100% {
+      transform: translateX(-100%); /* End position */
+  }
+}
+
 .side-bar .side-container .heading{
   padding: 20px;
   display: flex;
@@ -71,6 +97,14 @@ nav .heading span img{
 #back-icon{
   font-size: 15px;
 }
+.search-hab{
+  text-align: center;
+  padding: 10px;
+}
+.search-hab input{
+  font-size: 16px;
+}
+
 .anchor-tags{
   display: flex;
   flex-direction: column;
@@ -79,14 +113,31 @@ nav .heading span img{
   padding: 20px;
 }
 .anchor-tags a{
-  /* text-align: center; */
+  text-align: center;
   text-decoration: none;
   color: white;
   padding: 10px;
   width: 100%;
-  border-bottom: 2px solid grey;
+  border-radius: 30px;
+  /* border-bottom: 2px solid grey; */
 }
-
+.anchor-tags a:hover{
+  /* background-color: #2c82ff; */
+  background-color:gold;
+  box-shadow: 0px 0px 5px 1px silver;
+  color:#23242a;
+  transition: 0.5s ease-in-out;
+}
+:target{
+  
+  /* height: 100vh; */
+  animation-name: ref-animation;
+  animation-duration: 5s;
+}
+@keyframes ref-animation {
+  from { box-shadow:  0px 0px 20px 1px silver;     }  /* light yellow */
+  to   { box-shadow:  none; }  /* assuming original was transparent */
+}
 .container {
     max-width: 650px;
     margin: 0 auto;
@@ -138,13 +189,20 @@ hr.style13 {
 }
 .hab-add .container .add-habit button{
     padding: 7px;
-    background-color: #7f7cff;
+    background-color:snow;
     color: aliceblue;
-    border-radius: 10px
-   
+    border-radius: 10px;
+    color:black;
+    border: 2px solid silver;
+    cursor: pointer;
 }
 .hab-add .container .add-habit button:hover{
-  background-color: #f6b0e9;
+  background-color:gold;
+  transition: 0.5s ease-in-out;
+}
+.hab-add .container .add-habit button:active{
+  box-shadow: 0 0 10px 1px silver;
+  transition: 0.1s ease-in;
 }
 .hab-add .container .add-habit button:hover:after{
   --bg-color: #7f7cff;

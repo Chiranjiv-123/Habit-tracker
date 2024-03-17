@@ -9,10 +9,19 @@
     
 </head>
 <body>
-     <section class="side-bar" >
+     <section class="side-bar" style="display: none;">
+        <div class="blocker"></div>
         <div class="side-container">
             <div class="heading">
-                <span class="quick">
+                <div class="back" data-close="close">
+                    <span class="material-symbols-outlined" id="back-icon" data-close="close" >
+                        keyboard_backspace
+                    </span>
+                    <span data-close="close">
+                        &nbsp; back
+                    </span>
+                </div>
+                <span class="quick" >
                     <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 32 32" viewBox="0 0 32 32" id="lightning">
                         <path fill="#FFC10A" d="M26.8,11.5l-12,19C14.7,30.8,14.3,31,14,31c-0.1,0-0.2,0-0.3-0.1c-0.4-0.2-0.7-0.6-0.6-1.1L14.8,17H6
                                     c-0.4,0-0.7-0.2-0.9-0.5c-0.2-0.3-0.1-0.7,0.1-1l10-14c0.3-0.4,0.7-0.5,1.1-0.4C16.7,1.2,17,1.6,17,2v8h9c0.4,0,0.7,0.2,0.9,0.5
@@ -20,28 +29,23 @@
                         </path>
                     </svg>Quick Access
                 </span>  
-                <div class="back">
-                    <span class="material-symbols-outlined" id="back-icon" >
-                        keyboard_backspace
-                    </span>
-                    <span>
-                        &nbsp; back
-                    </span>
-                </div>
+                
+            </div>
+            <div class="search-hab">
+                <input type="text" placeholder="Search your Habits">        
             </div>
             <div class="anchor-tags">
-                <a href="">hello</a>
-                <a href="">bye
-                </a>
+                <!-- <a href="">hello</a>
+                <a href="">bye</a>
                 <a href="">adfad</a>
-                <a href="">dsfsdfsd </a>
+                <a href="">dsfsdfsd</a> -->
             </div>
         </div>
 
     </section>
     <nav class="navbar" id="navtag">
-        <div class="quick-access">
-            <span class="material-symbols-outlined">
+        <div class="quick-access" data-open="open">
+            <span class="material-symbols-outlined" data-open="open">
                 menu
             </span> 
         </div>
