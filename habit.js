@@ -19,6 +19,8 @@ let habits = ['Read a Book','going for walk']
     function add_habit(){
         let hbox = document.querySelector(".habits-boxes .container ");
         let add_but = document.querySelector(".add-habit button");
+        let anchor_tags = document.querySelector(".anchor-tags"); 
+
         // console.log()
         // let habits = []
         add_but.addEventListener('click',()=>{
@@ -39,8 +41,10 @@ let habits = ['Read a Book','going for walk']
 
                 // console.log(weekly_dates)
                 hbox.innerHTML=''
+                anchor_tags.innerHTML=''
                 // disp_habits(habits);
                 new_display();
+                side_bar_disp();
                 // del_hab()
             }
             //  console.log(habits)
@@ -67,8 +71,12 @@ let habits = ['Read a Book','going for walk']
     
                     // console.log(weekly_dates)
                     hbox.innerHTML=''
+                    anchor_tags.innerHTML=''
+
                     // disp_habits(habits);
                     new_display();
+                    side_bar_disp();
+
                     // del_hab()
                 }
             }
@@ -120,7 +128,7 @@ let habits = ['Read a Book','going for walk']
         return days[d.getDay()]
     
     }
-    function new_display(weekly_dates){
+    function new_display(){
         let hbox = document.querySelector(".habits-boxes .container ");
         for(let i in hab_obj){
             hbox.innerHTML += `    <div class="habit-box" id=box${Object.keys(hab_obj).length+1-i} >
@@ -225,6 +233,47 @@ let habits = ['Read a Book','going for walk']
 `
         }
     }
+    function side_bar_disp(){
+        
+        let anchor_tags = document.querySelector(".anchor-tags"); 
+        // for(let i in hab_obj){  
+        // }
+            for(let i in hab_obj){ 
+                anchor_tags.innerHTML+=`<a href="#box${i}" data-close="close">${hab_obj[i]['hab_name']}</a>`
+            }  
+    }
+    function open_sidebar(){
+        let m_box = document.querySelector('nav')
+        let s_box = document.querySelector('.side-bar');
+        m_box.addEventListener('click',(e)=>{
+            if(e.target.dataset.open === 'open'){
+                setTimeout(()=>{
+                    s_box.style.display = 'block';
+                },100)  
+                s_box.style.animationName = 'slideIn';  
+                s_box.style.animationDuration = '1s';
+                s_box.style.backdropFilter = 'blur(50%)';
+                 
+                
+            }
+        })
+    }
+    open_sidebar();
+    function close_sidebar(){
+        let s_box = document.querySelector('.side-bar');
+        s_box.addEventListener('click',(e)=>{
+            console.log(e.target.dataset.close)
+            if(e.target.dataset.close==='close'){
+                s_box.style.animationName = 'slideOut';  
+                s_box.style.animationDuration = '1s';
+                setTimeout(()=>{
+                    s_box.style.display = 'none';
+                },500) 
+                  
+            }
+        },true)
+    }
+    close_sidebar()
     function checkboxes(){
         let hbox = document.querySelector(".habits-boxes .container ")
         hbox.addEventListener('click',(e)=>{
@@ -371,6 +420,7 @@ let habits = ['Read a Book','going for walk']
 
     function del_hab(){
         let hbox = document.querySelector(".habits-boxes .container ");
+        let anchor_tags = document.querySelector('.anchor-tags')
         hbox.addEventListener('click',(e)=>{
             // console.log(e.target.id)
             if(!isNaN(parseInt(e.target.id))){
@@ -389,8 +439,11 @@ let habits = ['Read a Book','going for walk']
                 hab_obj = dupli_obj
                 console.log(hab_obj)
                 hbox.innerHTML=''
+                
                 // disp_habits(habits)
                 new_display();
+                anchor_tags.innerHTML=''
+                side_bar_disp();
                 }
                 // else{
                 //     hbox.innerHTML=''
