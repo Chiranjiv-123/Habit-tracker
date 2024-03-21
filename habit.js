@@ -14,6 +14,13 @@ let habits = ['Read a Book','going for walk']
         //     start_date:'2024-03-02',
         // }
     };
+    let search_obj = {
+        // 1:{
+        //     hab_name:'habit',
+        //     uska_anchor:`<a href = #box1></a>`
+        // }
+    }
+    let hab_arr = []
     // disp_habits(habits)
     // new_display();
     function add_habit(){
@@ -239,7 +246,17 @@ let habits = ['Read a Book','going for walk']
         // for(let i in hab_obj){  
         // }
             for(let i in hab_obj){ 
-                anchor_tags.innerHTML+=`<a href="#box${i}" data-close="close">${hab_obj[i]['hab_name']}</a>`
+                // anchor_ele = `<a href="#box${i}" data-close="close" class>${i} . ${hab_obj[i]['hab_name']} </a>`
+                // anchor_tags.innerHTML+=anchor_ele
+                
+                
+                let anchor = document.createElement('a')
+                anchor.setAttribute('href',`#box${i}`)
+                anchor.setAttribute('data-close',`close`)
+                anchor.textContent=`${hab_obj[i]['hab_name']}`
+                anchor_tags.append(anchor)
+                let newhab = {habs_name:hab_obj[i]['hab_name'],ele:anchor}
+                hab_arr.push(newhab);
             }  
     }
     function open_sidebar(){
@@ -252,7 +269,7 @@ let habits = ['Read a Book','going for walk']
                 },100)  
                 s_box.style.animationName = 'slideIn';  
                 s_box.style.animationDuration = '1s';
-                s_box.style.backdropFilter = 'blur(50%)';
+                // s_box.style.backdropFilter = 'blur(50%)';
                  
                 
             }
@@ -273,7 +290,32 @@ let habits = ['Read a Book','going for walk']
             }
         },true)
     }
-    close_sidebar()
+    close_sidebar();
+    function search_habit(){
+        
+        Object.keys(hab_obj).forEach((k)=>{
+            hab_arr.push(hab_obj[k]['hab_name'])
+        })
+        let search = document.querySelector('.search-inp');
+        search.addEventListener('input',(e)=>{
+            // console.log(e.target.value)
+            let search_val = e.target.value.toLowerCase();
+            console.log('---------------')
+            hab_arr.forEach(habs=>{
+                
+                const isVisible = habs.habs_name.toLowerCase().includes(search_val)
+                habs.ele.classList.toggle('hide',!isVisible)
+               
+            })
+
+        })
+
+          
+        
+        
+        
+    }
+    search_habit()
     function checkboxes(){
         let hbox = document.querySelector(".habits-boxes .container ")
         hbox.addEventListener('click',(e)=>{
@@ -305,119 +347,6 @@ let habits = ['Read a Book','going for walk']
 
 
     // }
-    function disp_habits(habits){
-        let hbox = document.querySelector(".habits-boxes .container ");
-        for (let i = 0;i<habits.length;i++){
-                hbox.innerHTML += `    <div class="habit-box" id=${habits.length-1-i} >
-                <div class="first-row">
-                    <div>
-                        <span class="habit">${habits[habits.length-1-i]}</span> 
-                        <span class="weekly">weekly</span>
-                    </div>
-                    
-                    <div class="delete-hab" id=${habits.length-1-i}><img id=${habits.length-1-i} src="photos/delete_icon.svg" alt=""></div>
-                </div>
-                <div class="dates">
-                    <div class="grid-container">
-                        <div class="date_check">
-                            <div class="date_day">
-                                <span class="date">14</span>
-                                <span class="day">Wed</span>    
-                            </div>
-                            <div class="checkbox-wrapper-26">
-                                <input type="checkbox" id="_checkbox-0">
-                                <label for="_checkbox-0">
-                                    <div class="tick_mark"></div>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="date_check">
-                            <div class="date_day">
-                                <span class="date">14</span>
-                                <span class="day">Wed</span>    
-                            </div>
-                            <div class="checkbox-wrapper-26">
-                                <input type="checkbox" id="_checkbox-1">
-                                <label for="_checkbox-1">
-                                    <div class="tick_mark"></div>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="date_check">
-                            <div class="date_day">
-                                <span class="date">14</span>
-                                <span class="day">Wed</span>    
-                            </div>
-                            <div class="checkbox-wrapper-26">
-                                <input type="checkbox" id="_checkbox-2">
-                                <label for="_checkbox-2">
-                                    <div class="tick_mark"></div>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="date_check">
-                            <div class="date_day">
-                                <span class="date">14</span>
-                                <span class="day">Wed</span>    
-                            </div>
-                            <div class="checkbox-wrapper-26">
-                                <input type="checkbox" id="_checkbox-3">
-                                <label for="_checkbox-3">
-                                    <div class="tick_mark"></div>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="date_check">
-                            <div class="date_day">
-                                <span class="date">14</span>
-                                <span class="day">Wed</span>    
-                            </div>
-                            <div class="checkbox-wrapper-26">
-                                <input type="checkbox" id="_checkbox-4">
-                                <label for="_checkbox-4">
-                                    <div class="tick_mark"></div>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="date_check">
-                            <div class="date_day">
-                                <span class="date">14</span>
-                                <span class="day">Wed</span>    
-                            </div>
-                            <div class="checkbox-wrapper-26">
-                                <input type="checkbox" id="_checkbox-5">
-                                <label for="_checkbox-5">
-                                    <div class="tick_mark"></div>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="date_check">
-                            <div class="date_day">
-                                <span class="date">14</span>
-                                <span class="day">Wed</span>    
-                            </div>
-                            <div class="checkbox-wrapper-26" >
-                                <input type="checkbox" id="_checkbox-6" >
-                                <label for="_checkbox-6" >
-                                    <div class="tick_mark" ></div>
-                                </label>
-                            </div>
-                        </div>
-
-                        
-                        
-
-                    </div>
-                </div>
-            </div>
-`
-            }
-    }
-
-   
-        
-    
-
     function del_hab(){
         let hbox = document.querySelector(".habits-boxes .container ");
         let anchor_tags = document.querySelector('.anchor-tags')
