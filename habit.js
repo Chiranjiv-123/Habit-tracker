@@ -1,17 +1,7 @@
 let habits = ["Read a Book", "going for walk"];
 let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-let hab_obj = {
-  // 1:{
-  //     hab_name:'Read a Book',
-  //     date_day:[false,false,false,false,false,false,false],
-  //     start_date:'2024-04-02'
-  // },
-  // 2:{
-  //     hab_name:'Going for walk',
-  //     date_day:[false,false,false,false,false,false,false],
-  //     start_date:'2024-03-02',
-  // }
-};
+let hab_obj = JSON.parse(localStorage.getItem("1"));
+
 let search_obj = {
   // 1:{
   //     hab_name:'habit',
@@ -42,6 +32,7 @@ function add_habit() {
         date_day: [false, false, false, false, false, false, false],
         date_arr: make_date_arr(),
       };
+      localStorage.setItem("1", JSON.stringify(hab_obj));
       hab_inp.value = "";
       // console.log(habits)
       // let weekly_dates = tomorrow_date_day(hab_obj['start_date'],[])
@@ -72,6 +63,7 @@ function add_habit() {
           date_day: [false, false, false, false, false, false, false],
           date_arr: make_date_arr(),
         };
+        localStorage.setItem("1", JSON.stringify(hab_obj));
         hab_inp.value = "";
         // console.log(habits)
         // let weekly_dates = tomorrow_date_day(hab_obj['start_date'],[])
@@ -380,6 +372,7 @@ function new_display() {
 `;
   }
 }
+new_display();
 function side_bar_disp() {
   let anchor_tags = document.querySelector(".anchor-tags");
   // for(let i in hab_obj){
@@ -397,6 +390,7 @@ function side_bar_disp() {
     hab_arr.push(newhab);
   }
 }
+side_bar_disp();
 function open_sidebar() {
   let m_box = document.querySelector("nav");
   let s_box = document.querySelector(".side-bar");
@@ -464,6 +458,7 @@ function checkboxes() {
           let checkbox_no = e.target.id.slice(10, 11);
           hab_obj[box_id]["date_day"][checkbox_no] = false;
         }
+        localStorage.setItem("1", JSON.stringify(hab_obj));
         console.log(hab_obj);
       }
     },
@@ -500,6 +495,7 @@ function del_hab() {
           dupli_obj[index + 1] = hab_obj[k];
         });
         hab_obj = dupli_obj;
+        localStorage.setItem("1", JSON.stringify(hab_obj));
         console.log(hab_obj);
         hbox.innerHTML = "";
 
