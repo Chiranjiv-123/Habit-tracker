@@ -1,4 +1,5 @@
 import { fetcher } from "./fetcher.js";
+let hab_arr = [];
 async function side_bar_disp() {
   let anchor_tags = document.querySelector(".anchor-tags");
 
@@ -11,6 +12,7 @@ async function side_bar_disp() {
     anchor.textContent = `${i["hab_name"]}`;
     anchor_tags.append(anchor);
     let newhab = { habs_name: i["hab_name"], ele: anchor };
+    hab_arr.push(newhab);
   }
 }
 
@@ -46,4 +48,4 @@ function close_sidebar() {
   );
 }
 
-export { side_bar_disp, open_sidebar, close_sidebar };
+export { side_bar_disp, open_sidebar, close_sidebar, hab_arr };
