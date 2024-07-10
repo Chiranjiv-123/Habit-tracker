@@ -3,3 +3,6 @@ dom2.html
 package-lock.json
 .env
 public/js/url.js
+index.html
+habit.js
+styles.css
